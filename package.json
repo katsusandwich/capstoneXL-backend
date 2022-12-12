@@ -1,14 +1,17 @@
 {
   "name": "project3-backend-bootcamp",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "start": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "pg": "^8.8.0",
+    "sequelize": "^6.26.0"
   },
   "devDependencies": {
-    "eslint": "^8.16.0"
+    "eslint": "^8.16.0",
+    "sequelize-cli": "^6.5.2"
   }
 }
