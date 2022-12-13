@@ -3,13 +3,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const userId = await queryInterface.sequelize.query("SELECT id from USERS");
+    // const userId = await queryInterface.sequelize.query("SELECT id from USERS");
 
     await queryInterface.bulkInsert(
       "wordlists",
       [
         {
-          userId: "randomid01234",
+          userId: "333",
           kanji: "蜜",
           meanings: "honey, nectar, molasses",
           kunreadings: "NA",
