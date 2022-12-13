@@ -1,17 +1,16 @@
 "use strict";
 
-// const { v4: uuidv4 } = require("uuid");
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const userId = await queryInterface.sequelize.query("SELECT id from USERS");
+
     await queryInterface.bulkInsert(
-      "users",
+      "testscores",
       [
         {
-          id: "randomid01234",
-          username: "spikespiegel",
-          email: "spikespiegel@gmail.com",
+          userId: "randomid01234",
+          score: "50/100",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -21,6 +20,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("users", null, {});
+    await queryInterface.bulkDelete("testscores", null, {});
   },
 };

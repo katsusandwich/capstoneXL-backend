@@ -1,25 +1,29 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    const userId = await queryInterface.sequelize.query("SELECT id from USERS");
+
+    await queryInterface.bulkInsert(
+      "wordlists",
+      [
+        {
+          userId: "randomid01234",
+          kanji: "蜜",
+          meanings: "honey, nectar, molasses",
+          kunreadings: "NA",
+          onreadings: "ミツ, ビツ",
+          namereadings: "NA",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("wordlists", null, {});
+  },
 };
