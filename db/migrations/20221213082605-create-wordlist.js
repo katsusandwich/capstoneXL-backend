@@ -11,21 +11,14 @@ module.exports = {
         // type: Sequelize.STRING,
       },
       userId: {
+        allowNull: false,
         type: Sequelize.STRING,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
-      kanji: {
-        type: Sequelize.STRING,
-      },
-      meanings: {
-        type: Sequelize.STRING,
-      },
-      kunreadings: {
-        type: Sequelize.STRING,
-      },
-      onreadings: {
-        type: Sequelize.STRING,
-      },
-      namereadings: {
+      name: {
         type: Sequelize.STRING,
       },
       createdAt: {

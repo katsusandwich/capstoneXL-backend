@@ -6,15 +6,11 @@ module.exports = {
     // const userId = await queryInterface.sequelize.query("SELECT id from USERS");
 
     await queryInterface.bulkInsert(
-      "revisionlist",
+      "scores",
       [
         {
           userId: "333",
-          kanji: "罰",
-          meanings: "penalty, punishment",
-          kunreadings: "ばっ.する",
-          onreadings: "バツ, バチ,ハツ",
-          namereadings: "NA",
+          score: "50/100",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -24,6 +20,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("revisionlist", null, {});
+    await queryInterface.bulkDelete("scores", null, {});
   },
 };

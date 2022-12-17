@@ -1,30 +1,11 @@
 const BaseController = require("./baseController");
-const { v4: uuidv4 } = require("uuid");
-const fabric = require("../db/models/fabric");
 
-class UsersController extends BaseController {
-  constructor(
-    model,
-    measurementModel,
-    wishlistModel,
-    fabricModel,
-    cuffModel,
-    collarModel,
-    backModel,
-    frontModel,
-    pocketModel,
-    shoppingCartModel
-  ) {
+class WordlistsController extends BaseController {
+  constructor(model, userModel, wordlistModel, scoreModel) {
     super(model);
-    this.measurementModel = measurementModel;
-    this.fabricModel = fabricModel;
-    this.cuffModel = cuffModel;
-    this.collarModel = collarModel;
-    this.backModel = backModel;
-    this.frontModel = frontModel;
-    this.pocketModel = pocketModel;
-    this.wishlistModel = wishlistModel;
-    this.shoppingCartModel = shoppingCartModel;
+    this.userModel = userModel;
+    this.wordlistModel = wordlistModel;
+    this.scoreModel = scoreModel;
   }
 
   // Insert user
@@ -53,6 +34,10 @@ class UsersController extends BaseController {
       return res.status(400).json({ error: true, msg: err });
     }
   }
+
+  //Retrieve wordlists for that user
+  // path param will be the wordlist
+  // query param will be the userid
 
   //find all wish lists of a user
   // async getAllWishlists(req, res) {
@@ -350,4 +335,4 @@ class UsersController extends BaseController {
   }
 }
 
-module.exports = UsersController;
+module.exports = WordlistsController;

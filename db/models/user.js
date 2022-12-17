@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+// import { Model } from "sequelize";
+
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -9,12 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.wordlist);
-      this.hasMany(models.test);
+      this.hasMany(models.score);
     }
   }
   user.init(
     {
-      username: DataTypes.STRING,
       email: DataTypes.STRING,
     },
     {

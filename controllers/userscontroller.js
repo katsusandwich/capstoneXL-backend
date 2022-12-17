@@ -5,18 +5,16 @@ class UsersController extends BaseController {
     model,
     // userModel,
     wordlistModel,
-    revisionlistModel,
-    testscoreModel
+    scoreModel
   ) {
     super(model);
     // this.userModel = userModel;
     this.wordlistModel = wordlistModel;
-    this.revisionlistModel = revisionlistModel;
-    this.testscoreModel = testscoreModel;
+    this.scoreModel = scoreModel;
   }
 
   // Insert user
-  async insertOne(req, res) {
+  async insertOneUser(req, res) {
     const { id, username, email } = req.body;
     console.log(req.body);
     try {
@@ -33,7 +31,7 @@ class UsersController extends BaseController {
   }
 
   // Retrieve specific user
-  async getOne(req, res) {
+  async getOneUser(req, res) {
     const { email } = req.params;
     try {
       const user = await this.model.findOne(email);
@@ -60,8 +58,8 @@ class UsersController extends BaseController {
   //   console.log(project.title); // 'My Title'
   // }
 
-  // Edit specific user
-  async editUser(req, res) {
+  // Edit specific user's username
+  async editOneUser(req, res) {
     const { username } = req.body;
     const { email } = req.params;
     console.log(req.body);

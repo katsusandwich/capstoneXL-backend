@@ -22,11 +22,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      kanji: DataTypes.STRING,
-      meanings: DataTypes.STRING,
-      kunreadings: DataTypes.STRING,
-      onreadings: DataTypes.STRING,
-      namereadings: DataTypes.STRING,
+      name: DataTypes.STRING,
     },
     {
       sequelize,

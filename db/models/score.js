@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 // import { Model } from "sequelize";
 
 module.exports = (sequelize, DataTypes) => {
-  class revisionlist extends Model {
+  class score extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.user);
     }
   }
-  revisionlist.init(
+  score.init(
     {
       userId: {
         type: DataTypes.STRING,
@@ -22,16 +22,12 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      kanji: DataTypes.STRING,
-      meanings: DataTypes.STRING,
-      kunreadings: DataTypes.STRING,
-      onreadings: DataTypes.STRING,
-      namereadings: DataTypes.STRING,
+      score: DataTypes.STRING,
     },
     {
       sequelize,
-      modelName: "revisionlist",
+      modelName: "score",
     }
   );
-  return revisionlist;
+  return score;
 };

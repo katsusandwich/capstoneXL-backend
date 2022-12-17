@@ -2,30 +2,46 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("revisionlist", {
+    await queryInterface.createTable("Words", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      wordlistId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "wordlists",
+          key: "id",
+        },
+      },
       userId: {
+        allowNull: false,
         type: Sequelize.STRING,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       kanji: {
         type: Sequelize.STRING,
       },
       meanings: {
-        type: Sequelize.STRING,
+        type: Sequelize.ARRAY,
       },
-      kunreadings: {
-        type: Sequelize.STRING,
+      kunReadings: {
+        type: Sequelize.ARRAY,
       },
-      onreadings: {
-        type: Sequelize.STRING,
+      onReadings: {
+        type: Sequelize.ARRAY,
       },
-      namereadings: {
-        type: Sequelize.STRING,
+      nameReadings: {
+        type: Sequelize.ARRAY,
+      },
+      needsRevision: {
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +54,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("revisionlist");
+    await queryInterface.dropTable("Words");
   },
 };
