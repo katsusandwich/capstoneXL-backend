@@ -19,7 +19,7 @@ module.exports = {
       },
       userId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         references: {
           model: "users",
           key: "id",
@@ -29,16 +29,16 @@ module.exports = {
         type: Sequelize.STRING,
       },
       meanings: {
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       kunReadings: {
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       onReadings: {
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       nameReadings: {
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       needsRevision: {
         type: Sequelize.BOOLEAN,
