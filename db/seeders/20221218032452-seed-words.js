@@ -6,11 +6,17 @@ module.exports = {
     // const userId = await queryInterface.sequelize.query("SELECT id from USERS");
 
     await queryInterface.bulkInsert(
-      "wordlists",
+      "words",
       [
         {
+          wordlistId: "1",
           userId: "333",
-          name: "Food words",
+          kanji: "蜜",
+          meanings: ["honey", "nectar", "molasses"],
+          kunReadings: [""],
+          onReadings: ["ミツ", "ビツ"],
+          nameReadings: [""],
+          needsRevision: true,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -20,6 +26,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("wordlists", null, {});
+    await queryInterface.bulkDelete("words", null, {});
   },
 };

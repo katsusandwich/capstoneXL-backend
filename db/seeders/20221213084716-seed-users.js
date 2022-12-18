@@ -10,7 +10,6 @@ module.exports = {
       [
         {
           id: "333",
-          username: "spikespiegel",
           email: "spikespiegel@gmail.com",
           createdAt: new Date(),
           updatedAt: new Date(),
