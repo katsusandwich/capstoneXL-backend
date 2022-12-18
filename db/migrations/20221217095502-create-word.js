@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       wordlistId: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "wordlists",

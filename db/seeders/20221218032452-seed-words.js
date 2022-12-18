@@ -9,7 +9,7 @@ module.exports = {
       "words",
       [
         {
-          wordlistId: "1",
+          wordlistId: 1,
           userId: "333",
           kanji: "蜜",
           meanings: ["honey", "nectar", "molasses"],
