@@ -56,6 +56,13 @@ class UsersRouter {
       this.controller.getAllWordlists.bind(this.controller)
     );
 
+    //get one wordlist
+    router.get(
+      "/:userId/wordlists/:wordlistId",
+      // this.auth,
+      this.controller.getOneWordlist.bind(this.controller)
+    );
+
     // insert one wordlist
     router.post(
       "/:userId/wordlists",

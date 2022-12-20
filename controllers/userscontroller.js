@@ -97,10 +97,21 @@ class UsersController extends BaseController {
   async getAllWordlists(req, res) {
     const { userId } = req.params;
     try {
-      const score = await this.wordlistModel.findAll({
+      const allWordlists = await this.wordlistModel.findAll({
         where: { userId: userId },
       });
-      return res.json(score);
+      return res.json(allWordlists);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //get one wordlist
+  async getOneWordlist(req, res) {
+    const { wordlistId } = req.params;
+    try {
+      const wordlist = await this.wordlistModel.findByPk(wordlistId);
+      return res.json(wordlist);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
