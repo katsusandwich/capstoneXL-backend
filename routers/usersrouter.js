@@ -28,6 +28,13 @@ class UsersRouter {
       this.controller.getAllScores.bind(this.controller)
     );
 
+    //get one score of user
+    router.get(
+      "/:userId/scores/:scoreId",
+      // this.auth,
+      this.controller.getAllScores.bind(this.controller)
+    );
+
     //insert one score of user
     router.post(
       "/:userId/scores",
