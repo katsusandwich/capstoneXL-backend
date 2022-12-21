@@ -55,8 +55,8 @@ class WordsController extends BaseController {
     }
   }
 
-  // delete one word
-  async deleteOneWord(req, res) {
+  // delete word
+  async deleteWord(req, res) {
     const { wordlistId, wordId } = req.params;
     try {
       const deletedWord = await this.wordModel.destroy({

@@ -32,7 +32,7 @@ class UsersRouter {
     router.get(
       "/:userId/scores/:scoreId",
       // this.auth,
-      this.controller.getAllScores.bind(this.controller)
+      this.controller.getOneScore.bind(this.controller)
     );
 
     //insert one score of user
@@ -63,7 +63,7 @@ class UsersRouter {
       this.controller.getOneWordlist.bind(this.controller)
     );
 
-    // insert one wordlist
+    // insert one wordlist for user
     router.post(
       "/:userId/wordlists",
       // this.auth,

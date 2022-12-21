@@ -21,18 +21,18 @@ class WordsRouter {
       this.controller.insertOneWord.bind(this.controller)
     );
 
-    //edit one word
+    //edit word
     router.put(
       "/:userId/wordlists/:wordlistId/:wordId",
       // this.auth,
-      this.controller.editOneWord.bind(this.controller)
+      this.controller.editWord.bind(this.controller)
     );
 
-    // delete one word
+    // delete word
     router.delete(
       "/:userId/wordlists/:wordlistId/:wordId",
       // this.auth,
-      this.controller.deleteOneWord.bind(this.controller)
+      this.controller.deleteWord.bind(this.controller)
     );
 
     return router;
