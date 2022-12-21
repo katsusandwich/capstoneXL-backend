@@ -70,11 +70,11 @@ class UsersRouter {
       this.controller.insertOneWordlist.bind(this.controller)
     );
 
-    //edit one wordlist
+    //edit one wordlist Name
     router.put(
-      "/:userId/wordlists/:wordlistId",
+      "/:userId/wordlists/:wordlistName",
       // this.auth,
-      this.controller.editOneWordlist.bind(this.controller)
+      this.controller.editWordlistName.bind(this.controller)
     );
 
     // delete one wordlist

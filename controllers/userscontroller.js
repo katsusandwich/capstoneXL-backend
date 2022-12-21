@@ -134,19 +134,19 @@ class UsersController extends BaseController {
     }
   }
 
-  // edit one wordlist
-  async editWordlist(req, res) {
+  // edit wordlist name
+  async editWordlistName(req, res) {
     const { wordlistId } = req.params;
-    const { wordlist } = req.body;
+    const { wordlistName } = req.body;
     console.log(req.body);
     try {
-      const wordlistToAmend = await this.wordlistModel.findByPk(wordlistId);
+      const wordlistNameToAmend = await this.wordlistModel.findByPk(wordlistId);
 
-      wordlistToAmend.set({
-        wordlist: wordlist,
+      wordlistNameToAmend.set({
+        wordlistName: wordlistName,
       });
-      await wordlistToAmend.save();
-      return res.json(wordlistToAmend);
+      await wordlistNameToAmend.save();
+      return res.json(wordlistNameToAmend);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
