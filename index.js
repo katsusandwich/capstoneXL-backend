@@ -17,7 +17,7 @@ const WordsController = require("./controllers/wordsController");
 
 // importing DB
 const db = require("./db/models/index");
-const { score, user, word, wordlist } = db;
+const { user, wordlist, score, word } = db;
 
 // initializing Controllers -> note the lowercase for the first word
 
