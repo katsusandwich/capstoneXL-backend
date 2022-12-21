@@ -25,9 +25,9 @@ const usersController = new UsersController(user, score, wordlist, word);
 
 const wordsController = new WordsController(user, score, wordlist, word);
 
-// initializing Routers
-const userRouter = new UsersRouter(usersController, auth).routes();
-const wordRouter = new WordsRouter(wordsController, auth).routes();
+// initializing Routers - insert , auth here after usersController and wordsController if needed
+const userRouter = new UsersRouter(usersController).routes();
+const wordRouter = new WordsRouter(wordsController).routes();
 
 // Enable CORS access to this server
 app.use(cors());
