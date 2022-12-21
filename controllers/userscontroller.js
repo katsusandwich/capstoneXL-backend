@@ -93,7 +93,7 @@ class UsersController extends BaseController {
     }
   }
 
-  // get all wordlists
+  // get all wordlists of user
   async getAllWordlists(req, res) {
     const { userId } = req.params;
     try {
