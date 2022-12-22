@@ -1,0 +1,69 @@
+const BaseController = require("./baseController");
+
+class ScoresController extends BaseController {
+  constructor(model, wordlistModel, userModel, wordModel) {
+    super(model);
+    this.wordlistModel = wordlistModel;
+    this.userModel = userModel;
+    this.wordModel = wordModel;
+  }
+
+  // get all scores
+  async getAllScores(req, res) {
+    const { userId } = req.params;
+    try {
+      const score = await this.scoreModel.findAll({
+        where: { userId: userId },
+      });
+      return res.json(score);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // get one score
+  async getOneScore(req, res) {
+    const { scoreId } = req.params;
+    try {
+      const score = await this.scoreModel.findByPk(scoreId);
+      return res.json(score);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // insert one score
+  async insertOneScore(req, res) {
+    const { userId } = req.params;
+    const { score } = req.body;
+    console.log(req.body);
+    try {
+      const newScore = await this.scoreModel.create({
+        userId: userId,
+        score: score,
+      });
+      return res.json(newScore);
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // delete one score
+  async deleteOneScore(req, res) {
+    const { userId, scoreId } = req.params;
+    try {
+      const deletedScore = await this.scoreModel.destroy({
+        where: {
+          id: scoreId,
+          userId: userId,
+        },
+      });
+      return res.json(deletedScore);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+}
+
+module.exports = ScoresController;
