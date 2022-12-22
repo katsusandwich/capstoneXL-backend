@@ -49,7 +49,9 @@ app.use(express.json());
 
 // using the routers
 app.use("/users", userRouter);
-app.use("/:userId/wordlists/:wordlistId/", wordRouter);
+app.use("/words", wordRouter);
+app.use("/wordlists", wordlistRouter);
+app.use("/scores", scoreRouter);
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
