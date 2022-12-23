@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      score: DataTypes.STRING,
+      scorePercentage: DataTypes.INTEGER,
     },
     {
       sequelize,

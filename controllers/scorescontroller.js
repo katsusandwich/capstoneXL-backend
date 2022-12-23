@@ -34,15 +34,14 @@ class ScoresController extends BaseController {
 
   // insert one score
   async insertOneScore(req, res) {
-    const { userId } = req.params;
-    const { score } = req.body;
+    const { scorePercentage, userId } = req.body;
     console.log(req.body);
     try {
-      const newScore = await this.model.create({
+      const newScorePercentage = await this.model.create({
         userId: userId,
-        score: score,
+        score: scorePercentage,
       });
-      return res.json(newScore);
+      return res.json(newScorePercentage);
     } catch (err) {
       console.log(err);
       return res.status(400).json({ error: true, msg: err });

@@ -21,13 +21,26 @@ class WordsController extends BaseController {
 
   // insert one word
   async insertOneWord(req, res) {
-    const { wordlistId } = req.params;
-    const { word } = req.body;
+    const {
+      wordlistId,
+      userId,
+      kanji,
+      meanings,
+      kunReadings,
+      onReadings,
+      namereadings,
+    } = req.body;
     console.log(req.body);
     try {
       const newWord = await this.model.create({
         wordlistId: wordlistId,
-        word: word,
+        userId,
+        kanji,
+        meanings,
+        kunReadings,
+        onReadings,
+        namereadings,
+        needsRevision: false,
       });
       return res.json(newWord);
     } catch (err) {

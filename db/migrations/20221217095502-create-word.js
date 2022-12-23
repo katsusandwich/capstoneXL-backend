@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       wordlistId: {
-        // allowNull: false,
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "wordlists",
@@ -26,9 +26,11 @@ module.exports = {
         },
       },
       kanji: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       meanings: {
+        allowNull: false,
         type: Sequelize.ARRAY(Sequelize.STRING),
       },
       kunReadings: {

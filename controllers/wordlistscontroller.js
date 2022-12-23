@@ -33,13 +33,12 @@ class WordlistsController extends BaseController {
 
   // insert one wordlist
   async insertOneWordlist(req, res) {
-    const { userId } = req.params;
-    const { wordlist } = req.body;
+    const { userId, name } = req.body;
     console.log(req.body);
     try {
       const newWordlist = await this.model.create({
         userId: userId,
-        wordlist: wordlist,
+        name: name,
       });
       return res.json(newWordlist);
     } catch (err) {

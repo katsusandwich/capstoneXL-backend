@@ -10,7 +10,7 @@ module.exports = {
       [
         {
           userId: "333",
-          score: "50/100",
+          scorePercentage: "50",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

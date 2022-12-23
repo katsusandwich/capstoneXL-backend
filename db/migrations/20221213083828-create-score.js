@@ -17,8 +17,8 @@ module.exports = {
           key: "id",
         },
       },
-      score: {
-        type: Sequelize.STRING,
+      scorePercentage: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
