@@ -11,7 +11,7 @@ class WordlistsController extends BaseController {
   async getAllWordlists(req, res) {
     const { userId } = req.params;
     try {
-      const allWordlists = await this.wordlistModel.findAll({
+      const allWordlists = await this.model.findAll({
         where: { userId: userId },
       });
       return res.json(allWordlists);
@@ -24,7 +24,7 @@ class WordlistsController extends BaseController {
   async getOneWordlist(req, res) {
     const { wordlistId } = req.params;
     try {
-      const wordlist = await this.wordlistModel.findByPk(wordlistId);
+      const wordlist = await this.model.findByPk(wordlistId);
       return res.json(wordlist);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
@@ -37,7 +37,7 @@ class WordlistsController extends BaseController {
     const { wordlist } = req.body;
     console.log(req.body);
     try {
-      const newWordlist = await this.wordlistModel.create({
+      const newWordlist = await this.model.create({
         userId: userId,
         wordlist: wordlist,
       });
@@ -54,7 +54,7 @@ class WordlistsController extends BaseController {
     const { wordlistName } = req.body;
     console.log(req.body);
     try {
-      const wordlistNameToAmend = await this.wordlistModel.findByPk(wordlistId);
+      const wordlistNameToAmend = await this.model.findByPk(wordlistId);
 
       wordlistNameToAmend.set({
         wordlistName: wordlistName,
@@ -70,7 +70,7 @@ class WordlistsController extends BaseController {
   async deleteOneWordlist(req, res) {
     const { userId, wordlistId } = req.params;
     try {
-      const deletedWordlist = await this.wordlistModel.destroy({
+      const deletedWordlist = await this.model.destroy({
         where: {
           id: wordlistId,
           userId: userId,

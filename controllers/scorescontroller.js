@@ -12,7 +12,7 @@ class ScoresController extends BaseController {
   async getAllScores(req, res) {
     const { userId } = req.params;
     try {
-      const score = await this.scoreModel.findAll({
+      const score = await this.model.findAll({
         where: { userId: userId },
       });
       return res.json(score);
@@ -25,7 +25,7 @@ class ScoresController extends BaseController {
   async getOneScore(req, res) {
     const { scoreId } = req.params;
     try {
-      const score = await this.scoreModel.findByPk(scoreId);
+      const score = await this.model.findByPk(scoreId);
       return res.json(score);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
@@ -38,7 +38,7 @@ class ScoresController extends BaseController {
     const { score } = req.body;
     console.log(req.body);
     try {
-      const newScore = await this.scoreModel.create({
+      const newScore = await this.model.create({
         userId: userId,
         score: score,
       });
@@ -53,7 +53,7 @@ class ScoresController extends BaseController {
   async deleteOneScore(req, res) {
     const { userId, scoreId } = req.params;
     try {
-      const deletedScore = await this.scoreModel.destroy({
+      const deletedScore = await this.model.destroy({
         where: {
           id: scoreId,
           userId: userId,

@@ -12,7 +12,7 @@ class WordsController extends BaseController {
   async getOneWord(req, res) {
     const { wordId } = req.params;
     try {
-      const word = await this.wordModel.findByPk(wordId);
+      const word = await this.model.findByPk(wordId);
       return res.json(word);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
@@ -25,7 +25,7 @@ class WordsController extends BaseController {
     const { word } = req.body;
     console.log(req.body);
     try {
-      const newWord = await this.wordModel.create({
+      const newWord = await this.model.create({
         wordlistId: wordlistId,
         word: word,
       });
@@ -42,7 +42,7 @@ class WordsController extends BaseController {
     const { word } = req.body;
     console.log(req.body);
     try {
-      const wordToAmend = await this.wordModel.findByPk(wordId);
+      const wordToAmend = await this.model.findByPk(wordId);
 
       wordToAmend.set({
         wordId: wordId,
@@ -59,7 +59,7 @@ class WordsController extends BaseController {
   async deleteWord(req, res) {
     const { wordlistId, wordId } = req.params;
     try {
-      const deletedWord = await this.wordModel.destroy({
+      const deletedWord = await this.model.destroy({
         where: {
           id: wordId,
           wordlistId: wordlistId,
