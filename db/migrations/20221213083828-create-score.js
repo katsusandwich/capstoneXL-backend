@@ -18,6 +18,7 @@ module.exports = {
         },
       },
       scorePercentage: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       createdAt: {
