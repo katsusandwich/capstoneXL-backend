@@ -68,14 +68,13 @@ class WordsController extends BaseController {
     }
   }
 
-  // delete word
+  // delete word - here I have tried removing reference to wordlist id as a param
   async deleteWord(req, res) {
-    const { wordlistId, wordId } = req.params;
+    const { wordId } = req.params;
     try {
       const deletedWord = await this.model.destroy({
         where: {
           id: wordId,
-          wordlistId: wordlistId,
         },
       });
       return res.json(deletedWord);

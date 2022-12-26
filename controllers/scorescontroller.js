@@ -25,8 +25,8 @@ class ScoresController extends BaseController {
   async getOneScore(req, res) {
     const { scoreId } = req.params;
     try {
-      const score = await this.model.findByPk(scoreId);
-      return res.json(score);
+      const scorePercentage = await this.model.findByPk(scoreId);
+      return res.json(scorePercentage);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
@@ -39,7 +39,7 @@ class ScoresController extends BaseController {
     try {
       const newScorePercentage = await this.model.create({
         userId: userId,
-        score: scorePercentage,
+        scorePercentage: scorePercentage,
       });
       return res.json(newScorePercentage);
     } catch (err) {
@@ -48,14 +48,13 @@ class ScoresController extends BaseController {
     }
   }
 
-  // delete one score
+  // delete one score - removed userid as a param
   async deleteOneScore(req, res) {
-    const { userId, scoreId } = req.params;
+    const { scoreId } = req.params;
     try {
       const deletedScore = await this.model.destroy({
         where: {
           id: scoreId,
-          userId: userId,
         },
       });
       return res.json(deletedScore);

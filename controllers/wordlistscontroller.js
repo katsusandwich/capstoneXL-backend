@@ -65,14 +65,13 @@ class WordlistsController extends BaseController {
     }
   }
 
-  // delete one wordlist
+  // delete one wordlist - also removed userid as a param
   async deleteOneWordlist(req, res) {
-    const { userId, wordlistId } = req.params;
+    const { wordlistId } = req.params;
     try {
       const deletedWordlist = await this.model.destroy({
         where: {
           id: wordlistId,
-          userId: userId,
         },
       });
       return res.json(deletedWordlist);
