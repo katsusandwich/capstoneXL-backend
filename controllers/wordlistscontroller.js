@@ -20,7 +20,7 @@ class WordlistsController extends BaseController {
     }
   }
 
-  //get one wordlist
+  //get one wordlist and all the words in it
   async getOneWordlist(req, res) {
     const { wordlistId } = req.params;
     try {

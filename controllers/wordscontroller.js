@@ -7,26 +7,67 @@ class WordsController extends BaseController {
     this.scoreModel = scoreModel;
     this.userModel = userModel;
   }
-  //get all words
-  async getAllWords(req, res) {
+
+  //get all words agnostic of wordlist but includes wordlist info
+  // async getAllWords(req, res) {
+  //   try {
+  //     const allWords = await this.model.findAll({
+  //       include: this.wordlistModel,
+  //     });
+  //     return res.json(allWords);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: true, msg: err });
+  //   }
+  // }
+
+  //get all words agnostic of wordlist but does not include wordlist info - this is A
+  // async getAllWords(req, res) {
+  //   try {
+  //     const allWords = await this.model.findAll();
+  //     return res.json(allWords);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: true, msg: err });
+  //   }
+  // }
+
+  //get all words in a wordlist given wordlist info - this works with the relevant modification in the router, turn this off if you use A
+  async getAllWordsByWordlist(req, res) {
+    const { wordlistId } = req.params;
     try {
-      const allWords = await this.model.findAll();
+      const allWords = await this.model.findAll({
+        where: {
+          wordlistId: wordlistId,
+        },
+      });
       return res.json(allWords);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
-  //get one word
-  async getOneWord(req, res) {
-    const { wordId } = req.params;
-    try {
-      const word = await this.model.findByPk(wordId);
-      return res.json(word);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
+  // //get one word - have turned off on assumption not required
+  // async getOneWord(req, res) {
+  //   const { wordId } = req.params;
+  //   try {
+  //     const word = await this.model.findByPk(wordId);
+  //     return res.json(word);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: true, msg: err });
+  //   }
+  // }
+
+  //get one word but includes wordlist info
+  // async getOneWord(req, res) {
+  //   const { wordId } = req.params;
+  //   try {
+  //     const word = await this.model.findByPk(wordId, {
+  //       include: this.wordlistModel,
+  //     });
+  //     return res.json(word);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: true, msg: err });
+  //   }
+  // }
 
   // insert one word
   async insertOneWord(req, res) {
