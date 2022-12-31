@@ -9,7 +9,7 @@ class WordlistsRouter {
   routes() {
     // get all wordlists
     router.get(
-      "/",
+      "/:userId",
       // this.auth,
       this.controller.getAllWordlists.bind(this.controller)
     );
