@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.user);
+      this.hasMany(models.word);
     }
   }
   wordlist.init(

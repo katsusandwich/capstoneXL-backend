@@ -24,7 +24,9 @@ class WordlistsController extends BaseController {
   async getOneWordlist(req, res) {
     const { wordlistId } = req.params;
     try {
-      const wordlist = await this.model.findByPk(wordlistId);
+      const wordlist = await this.model.findByPk(wordlistId, {
+        include: this.wordModel,
+      });
       return res.json(wordlist);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
