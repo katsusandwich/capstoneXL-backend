@@ -7,7 +7,7 @@ class WordsRouter {
     // this.auth = auth; and put auth in the constructor
   }
   routes() {
-    //get all words - AS DRAFTED THIS WILL BREAK THE GET FUNCTION
+    //get all words
     router.get("/", this.controller.getAllWords.bind(this.controller));
 
     //get one word

@@ -7,8 +7,8 @@ class WordsController extends BaseController {
     this.scoreModel = scoreModel;
     this.userModel = userModel;
   }
-  //get all words - AS DRAFTED THIS WILL BREAK THE GET FUNCTION
-  async getAll(req, res) {
+  //get all words
+  async getAllWords(req, res) {
     try {
       const allWords = await this.model.findAll();
       return res.json(allWords);
