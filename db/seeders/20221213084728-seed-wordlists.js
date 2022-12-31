@@ -14,6 +14,12 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: "333",
+          name: "Animals",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
