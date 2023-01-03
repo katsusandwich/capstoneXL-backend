@@ -14,9 +14,9 @@ class WordlistsRouter {
       this.controller.getAllWordlists.bind(this.controller)
     );
 
-    //get one wordlist
+    //get one wordlist - NEEDS REWRITE
     router.get(
-      "/:wordlistId",
+      "/:userId/:wordlistId",
       // this.auth,
       this.controller.getOneWordlist.bind(this.controller)
     );
