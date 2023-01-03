@@ -7,14 +7,14 @@ class WordlistsRouter {
     // this.auth = auth; and put auth in the constructor
   }
   routes() {
-    // get all wordlists
+    // get all wordlists of user
     router.get(
       "/:userId",
       // this.auth,
       this.controller.getAllWordlists.bind(this.controller)
     );
 
-    //get one wordlist - NEEDS REWRITE
+    //get one wordlist by wordlistId
     router.get(
       "/:userId/:wordlistId",
       // this.auth,
