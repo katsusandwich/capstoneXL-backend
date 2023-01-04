@@ -1,4 +1,5 @@
 const BaseController = require("./baseController");
+const { Op } = require("sequelize");
 
 class WordsController extends BaseController {
   constructor(model, wordlistModel, scoreModel, userModel) {
@@ -40,6 +41,23 @@ class WordsController extends BaseController {
         },
       });
       return res.json(allWords);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //get all words given wordlistId that have kunReadings
+  async getAllWordsByWordlistWithKunReadings(req, res) {
+    const { wordlistId } = req.params;
+    try {
+      const allWordsWithKunReadings = await this.model.findAll({
+        where: {
+          wordlistId: wordlistId,
+          [Op.not]: [{ kunReadings: null }],
+          [Op.not]: [{ kunReadings: [] }],
+        },
+      });
+      return res.json(allWordsWithKunReadings);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

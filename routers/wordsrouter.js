@@ -13,6 +13,12 @@ class WordsRouter {
       this.controller.getAllWordsByWordlist.bind(this.controller)
     );
 
+    //get all words given wordlistId that have a kunReadings
+    router.get(
+      "/:wordlistId/kunReadings",
+      this.controller.getAllWordsByWordlistWithKunReadings.bind(this.controller)
+    );
+
     //get all words generally - if you want this you have to change the controller to A and disable get all words given wordlistId
     // router.get("/", this.controller.getAllWords.bind(this.controller));
 
