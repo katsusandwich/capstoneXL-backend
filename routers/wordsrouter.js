@@ -19,6 +19,28 @@ class WordsRouter {
       this.controller.getAllWordsByWordlistWithKunReadings.bind(this.controller)
     );
 
+    //get all words given wordlistId that have a onReadings
+    router.get(
+      "/:wordlistId/onReadings",
+      this.controller.getAllWordsByWordlistWithOnReadings.bind(this.controller)
+    );
+
+    //get all words given wordlistId that have a nameReadings
+    router.get(
+      "/:wordlistId/nameReadings",
+      this.controller.getAllWordsByWordlistWithNameReadings.bind(
+        this.controller
+      )
+    );
+
+    //get all words given wordlistId that needsRevision
+    router.get(
+      "/:wordlistId/needsRevision",
+      this.controller.getAllWordsByWordlistThatNeedsRevision.bind(
+        this.controller
+      )
+    );
+
     //get all words generally - if you want this you have to change the controller to A and disable get all words given wordlistId
     // router.get("/", this.controller.getAllWords.bind(this.controller));
 

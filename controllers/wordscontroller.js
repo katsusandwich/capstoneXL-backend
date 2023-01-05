@@ -63,6 +63,56 @@ class WordsController extends BaseController {
     }
   }
 
+  //get all words given wordlistId that have onReadings
+  async getAllWordsByWordlistWithOnReadings(req, res) {
+    const { wordlistId } = req.params;
+    try {
+      const allWordsWithOnReadings = await this.model.findAll({
+        where: {
+          wordlistId: wordlistId,
+          [Op.not]: [{ onReadings: null }],
+          [Op.not]: [{ onReadings: [] }],
+        },
+      });
+      return res.json(allWordsWithOnReadings);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //get all words given wordlistId that have nameReadings
+  async getAllWordsByWordlistWithNameReadings(req, res) {
+    const { wordlistId } = req.params;
+    try {
+      const allWordsWithNameReadings = await this.model.findAll({
+        where: {
+          wordlistId: wordlistId,
+          [Op.not]: [{ nameReadings: null }],
+          [Op.not]: [{ nameReadings: [] }],
+        },
+      });
+      return res.json(allWordsWithNameReadings);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //get all words given wordlistId that needsRevision
+  async getAllWordsByWordlistThatNeedsRevision(req, res) {
+    const { wordlistId } = req.params;
+    try {
+      const allWordsThatNeedsRevision = await this.model.findAll({
+        where: {
+          wordlistId: wordlistId,
+          needsRevision: true,
+        },
+      });
+      return res.json(allWordsThatNeedsRevision);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
   // //get one word - have turned off on assumption not required
   // async getOneWord(req, res) {
   //   const { wordId } = req.params;
