@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 class WordsRouter {
-  constructor(controller) {
+  constructor(controller, auth) {
     this.controller = controller;
-    // this.auth = auth; and put auth in the constructor
+    this.auth = auth;
   }
   routes() {
     //get all words given wordlistId
@@ -54,21 +54,21 @@ class WordsRouter {
     // insert one word
     router.post(
       "/",
-      // this.auth,
+      this.auth,
       this.controller.insertOneWord.bind(this.controller)
     );
 
     //edit word
     router.put(
       "/:wordId",
-      // this.auth,
+      this.auth,
       this.controller.editWord.bind(this.controller)
     );
 
     // delete word
     router.delete(
       "/:wordId",
-      // this.auth,
+      this.auth,
       this.controller.deleteWord.bind(this.controller)
     );
 

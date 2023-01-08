@@ -1,9 +1,14 @@
 const cors = require("cors");
 const express = require("express");
 require("dotenv").config();
+const { auth } = require("express-oauth2-jwt-bearer");
 
-// const auth = require("./middlewares/auth");
+const checkJwt = auth({
+  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+});
 
+// const PORT = process.env.PORT;
 const PORT = 8181;
 const app = express();
 
@@ -35,17 +40,17 @@ const wordlistsController = new WordlistsController(
 );
 const scoresController = new ScoresController(score, wordlist, user, word);
 
-// initializing Routers - insert , auth here after usersController and wordsController if needed
+// initializing Routers
 const userRouter = new UsersRouter(usersController).routes();
-const wordRouter = new WordsRouter(wordsController).routes();
-const wordlistRouter = new WordlistsRouter(wordlistsController).routes();
-const scoreRouter = new ScoresRouter(scoresController).routes();
+const wordRouter = new WordsRouter(wordsController, checkJwt).routes();
+const wordlistRouter = new WordlistsRouter(
+  wordlistsController,
+  checkJwt
+).routes();
+const scoreRouter = new ScoresRouter(scoresController, checkJwt).routes();
 
 // Enable CORS access to this server
 app.use(cors());
-
-// Enable reading JSON request bodies
-app.use(express.json());
 
 // using the routers
 app.use("/users", userRouter);
