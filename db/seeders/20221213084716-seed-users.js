@@ -10,7 +10,7 @@ module.exports = {
       [
         {
           id: "333",
-          email: "katsusandowichy@gmail.com",
+          email: "test@test.com",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
