@@ -42,7 +42,7 @@ const scoresController = new ScoresController(score, wordlist, user, word);
 
 // initializing Routers
 const userRouter = new UsersRouter(usersController, checkJwt).routes();
-const wordRouter = new WordsRouter(wordsController, checkJwt).routes();
+const wordRouter = new WordsRouter(wordsController).routes();
 const wordlistRouter = new WordlistsRouter(
   wordlistsController,
   checkJwt

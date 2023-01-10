@@ -10,14 +10,14 @@ class WordlistsRouter {
     // get all wordlists of user
     router.get(
       "/:userId",
-      this.auth,
+      // this.auth,
       this.controller.getAllWordlists.bind(this.controller)
     );
 
     //get one wordlist by wordlistId
     router.get(
       "/:userId/:wordlistId",
-      this.auth,
+      // this.auth,
       this.controller.getOneWordlist.bind(this.controller)
     );
 
