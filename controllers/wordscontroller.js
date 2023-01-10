@@ -139,6 +139,7 @@ class WordsController extends BaseController {
 
   // insert one word
   async insertOneWord(req, res) {
+    console.log(req.body);
     const {
       wordlistId,
       userId,

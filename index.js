@@ -51,6 +51,7 @@ const scoreRouter = new ScoresRouter(scoresController, checkJwt).routes();
 
 // Enable CORS access to this server
 app.use(cors());
+app.use(express.json());
 
 // using the routers
 app.use("/users", userRouter);
