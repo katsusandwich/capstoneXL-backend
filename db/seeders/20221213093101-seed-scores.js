@@ -9,7 +9,7 @@ module.exports = {
       "scores",
       [
         {
-          userId: "333",
+          userId: "auth0|63bbd21f15883ca1142adeb9",
           scorePercentage: "50",
           createdAt: new Date(),
           updatedAt: new Date(),

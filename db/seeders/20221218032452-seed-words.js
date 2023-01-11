@@ -10,7 +10,7 @@ module.exports = {
       [
         {
           wordlistId: 1,
-          userId: "333",
+          userId: "auth0|63bbd21f15883ca1142adeb9",
           kanji: "蜜",
           meanings: ["honey", "nectar", "molasses"],
           // kunReadings: [""],
@@ -22,7 +22,7 @@ module.exports = {
         },
         {
           wordlistId: 1,
-          userId: "333",
+          userId: "auth0|63bbd21f15883ca1142adeb9",
           kanji: "塩",
           meanings: ["salt"],
           kunReadings: ["しお"],
@@ -34,7 +34,7 @@ module.exports = {
         },
         {
           wordlistId: 2,
-          userId: "333",
+          userId: "auth0|63bbd21f15883ca1142adeb9",
           kanji: "猫",
           meanings: ["cat"],
           kunReadings: ["ねこ"],

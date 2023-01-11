@@ -9,13 +9,13 @@ module.exports = {
       "wordlists",
       [
         {
-          userId: "333",
+          userId: "auth0|63bbd21f15883ca1142adeb9",
           name: "Food words",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          userId: "333",
+          userId: "auth0|63bbd21f15883ca1142adeb9",
           name: "Animals",
           createdAt: new Date(),
           updatedAt: new Date(),
