@@ -8,18 +8,18 @@ class UsersRouter {
   }
   routes() {
     //get one user by userId
-    // router.get(
-    //   "/:userId",
-    //   // this.auth,
-    //   this.controller.getOneUser.bind(this.controller)
-    // );
-
-    //get one user by email
     router.get(
-      "/:email",
+      "/:userId",
       // this.auth,
       this.controller.getOneUser.bind(this.controller)
     );
+
+    //get one user by email
+    // router.get(
+    //   "/:email",
+    //   // this.auth,
+    //   this.controller.getOneUser.bind(this.controller)
+    // );
 
     //insert one user - what should the path be?
     router.post(

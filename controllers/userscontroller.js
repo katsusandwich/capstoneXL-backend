@@ -8,28 +8,40 @@ class UsersController extends BaseController {
     this.wordModel = wordModel;
   }
 
-  // get one user with userId
+  // get one user with userId where userId
+  async getOneUser(req, res) {
+    const { userId } = req.params;
+    try {
+      const user = await this.model.findByPk(userId);
+      return res.json(user);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  //get one user with useremail
+
   // async getOneUser(req, res) {
-  //   const { userId } = req.params;
+  //   const { email } = req.params;
   //   try {
-  //     const user = await this.model.findByPk(userId);
+  //     const user = await this.model.findOne({ where: { email } });
   //     return res.json(user);
   //   } catch (err) {
   //     return res.status(400).json({ error: true, msg: err });
   //   }
   // }
 
-  //get one user with useremail
+  //get one user with userid - dont use this is wrong
 
-  async getOneUser(req, res) {
-    const { email } = req.params;
-    try {
-      const user = await this.model.findOne({ where: { email } });
-      return res.json(user);
-    } catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
+  // async getOneUser(req, res) {
+  //   const { userId } = req.params;
+  //   try {
+  //     const user = await this.model.findOne({ where: { userId } });
+  //     return res.json(user);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: true, msg: err });
+  //   }
+  // }
 
   // insert one user
 
